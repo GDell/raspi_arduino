@@ -6,8 +6,8 @@
 
 //Define the pins used for receiving
 //and transmitting information via Bluetooth
-const int rxpin = 0;
-const int txpin = 1;
+const int rxpin = 6;
+const int txpin = 7;
 
 //Variable to store input value
 //initialized with arbitrary value
