@@ -1,3 +1,5 @@
 .sketch.ino.swp
 */env
 .build/
+*build/*
+env
