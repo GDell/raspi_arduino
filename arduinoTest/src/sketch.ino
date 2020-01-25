@@ -28,7 +28,7 @@ void setup(){
   Serial.println("Serial monitor ready.");
 
   //Initialize the bluetooth
-  bluetooth.begin(9600);
+  bluetooth.begin(600);
   Serial.println("Bluetooth ready.");
   bluetooth.println("Bluetooth ready.");
 
