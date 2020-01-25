@@ -1,4 +1,4 @@
-Control an Arduino with a Raspberry Pi via Bluetooth and an http server.
+## Control an Arduino with a Raspberry Pi via Bluetooth and an http server.
 
 Requirements:
 
