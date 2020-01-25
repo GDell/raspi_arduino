@@ -40,7 +40,7 @@ Run `python server.py` to start the Flask http server.
 
 
 ## Uploading to the Aruino from a Raspberry Pi.
-	<https://medium.com/@somesh557/arduino-with-raspberry-pi-headless-mode-a0516d78e3bc>
+<https://medium.com/@somesh557/arduino-with-raspberry-pi-headless-mode-a0516d78e3bc>
 
 Initialize a project folder for Arduino code.
 
