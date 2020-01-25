@@ -24,10 +24,14 @@ def sendMessageTo(targetBluetoothMacAddress):
   sock.close()
 
 def lookUpNearbyBluetoothDevices():
-  print "Searching for nearby bluetooth devices ... "  
+  print "Searching for nearby bluetooth devices ... "
   nearby_devices = bluetooth.discover_devices()
   for bdaddr in nearby_devices:
     print str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]"
 
 
 lookUpNearbyBluetoothDevices()
+
+print "Provide address:"
+theNum = str(input())
+sendMessageTo(theNum)
