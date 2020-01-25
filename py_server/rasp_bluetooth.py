@@ -48,6 +48,7 @@ def lookUpNearbyBluetoothDevices():
   selection = input("> ") - 1
   print "You have selected", bluetooth.lookup_name(nearby_devices[selection])
   bd_addr = nearby_devices[selection]
+  print "BD addr:"+str(bd_addr)
   sendMessageTo(bd_addr)
 
 
