@@ -6,8 +6,8 @@
 
 //Define the pins used for receiving
 //and transmitting information via Bluetooth
-const int rxpin = 6;
-const int txpin = 7;
+const int rxpin = 0;
+const int txpin = 1;
 
 //Variable to store input value
 //initialized with arbitrary value
@@ -51,12 +51,13 @@ void loop() {
     ledCount = ledCount + 1;
   }
 
-  if(bluetooth.available()){
+  //if(bluetooth.available()){
     //Remember new data
-    k = bluetooth.read();
+  Serial.println("Reading bluetooth ...");
+  k = bluetooth.read();
     //Print the data for debugging purposes
-    Serial.println(k);
-  }
+  Serial.println(k);
+  //}
 
   delay(2500);                // waits for a second
   digitalWrite(highPin, LOW);
