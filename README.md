@@ -2,13 +2,13 @@
 
 Requirements:
 
-	- Internet connection
+- Internet connection
 
-	- Raspberry Pi and bluetooth module <intorobotics.com/pick-right-bluetooth-module-diy-arduino-project/>
+- Raspberry Pi and bluetooth module <intorobotics.com/pick-right-bluetooth-module-diy-arduino-project/>
 
-	- Arduino
+- Arduino
 
-	- An ethernet cable (Rpi2 has builtin wifi but it is very slow)
+- An ethernet cable (Rpi2 has builtin wifi but it is very slow)
 
 ### Raspberry Pi Config
 Connect the ethernet cable to your Rpi.
