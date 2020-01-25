@@ -7,7 +7,7 @@ Requirements:
 	- Raspberry Pi and bluetooth module <intorobotics.com/pick-right-bluetooth-module-diy-arduino-project/>
 
 	- Arduino
-	
+
 	- An ethernet cable (Rpi2 has builtin wifi but it is very slow)
 
 ### Raspberry Pi Config
@@ -17,27 +17,26 @@ In order to host something on local internet, host on an open port with the Rpi'
 In order to do this, we will need to find what port the Rpi is listening over your local internet.
 
 You can see what ports are open on this Rpi or other computers on the network using this command on your local computer:
-	`sudo nmap -O 192.168.1.170`
+
+`sudo nmap -O 192.168.1.170`
 
 Scan for hosts on your local network:
-	`nmap -sP -PI -PT 192.168.1.220/24`
+
+`nmap -sP -PI -PT 192.168.1.220/24`
 
 Once you find the Rpi's IP, connect to it via ssh:
-	`ssh 'username'@'ip_address'`
+
+`ssh 'username'@'ip_address'`
 
 Once connected to the Rpi:
 
-	Open the Raspberry Config Tool to setup your Rpi.
-	`sudo raspi-config`
+Open the Raspberry Config Tool to setup your Rpi.
 
-	You can stop or run an apache server on on port 80 with:
-	`sudo service apache2 restart`
-	Stop the server.
-	`sudo service apache2 stop`
+`sudo raspi-config`
 
-	Find Python scripts for hosting an http server and connecting to bluetooth devices in `/raspi_arduino/py_server/`.
+Find Python scripts for hosting an http server and connecting to bluetooth devices in `/raspi_arduino/py_server/`.
 
-	Run `python server.py` to start the Flask http server.
+Run `python server.py` to start the Flask http server.
 
 
 ## Uploading to the Aruino from a Raspberry Pi.
@@ -45,30 +44,37 @@ Once connected to the Rpi:
 
 Initialize a project folder for Arduino code.
 
-	`ino init`
+`ino init`
 
-	`cd src`
+`cd src`
 
-	`vim sketch.ino`
+`vim sketch.ino`
 
 Upload to the board.
 
-	Build.
-	`sudo ino build`
+Build.
 
-	Upload.
-	`sudo ino upload`
+`sudo ino build`
 
-	Upload to a specific board type:
-	`sudo ino build -m mega2560`
-	`sudo ino upload -m mega2560`
+Upload.
 
-	Start a serial port.
-	Specify the Baud rate with `-b`. -600 baud rate seems to work for mega.
-	`sudo ino serial  -b 600`
+`sudo ino upload`
 
-	Build and uplooad for arduino mega.
-	`sudo ino build -m mega2560 && sudo ino upload -m mega2560`
+Upload to a specific board type:
 
-	Build, upload, and port the serial monitor to the terminal.
-	`sudo ino build -m mega2560 && sudo ino upload -m mega2560 && sudo ino serial -b 600`
+`sudo ino build -m mega2560`
+
+`sudo ino upload -m mega2560`
+
+Start a serial port.
+Specify the Baud rate with `-b`. -600 baud rate seems to work for mega.
+
+`sudo ino serial  -b 600`
+
+Build and uplooad for arduino mega.
+
+`sudo ino build -m mega2560 && sudo ino upload -m mega2560`
+
+Build, upload, and port the serial monitor to the terminal.
+
+`sudo ino build -m mega2560 && sudo ino upload -m mega2560 && sudo ino serial -b 600`
