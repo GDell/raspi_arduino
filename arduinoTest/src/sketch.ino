@@ -3,8 +3,8 @@
 const int baud_rate = 9600;
 const int endSig = 7651234;
 
-String receied_data = '';
-String last_operation = '';
+String receied_data;
+String last_operation;
 
 void setup() {
   // MAKE SURE THAT THE TX AND RX PINS ARE CONNECTED TO:
@@ -35,9 +35,8 @@ void loop() { // run over and over
     delay(5); // Very short delay as we are readuing data.
   } else {
     if (received_data.length() > 1) {
-      Serial.println("Finished receiving operation:")
-      Serial.println(received_data)
-      Serial.println('')
+      Serial.println("Finished receiving operation:");
+      Serial.println(received_data);
       last_operation = receied_data;
       receied_data = '';
     }
