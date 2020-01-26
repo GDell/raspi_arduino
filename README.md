@@ -24,16 +24,18 @@ Use the following article to enable bluetooth on your Rpi:
 
 <https://www.cnet.com/how-to/how-to-setup-bluetooth-on-a-raspberry-pi-3/>
 
-Them ...
+Then ...
 
 Follow this guide in order to allow python to access the Raspberry Pi's bluetooth module.
 
 <http://blog.davidvassallo.me/2014/05/11/android-linux-raspberry-pi-bluetooth-communication/>
 
-In order to host something on local internet, host on an open port with the Rpi's IP address as the hostname.
-In order to do this, we will need to find what port the Rpi is listening over your local internet.
+In order to host something on your local internet, host on an open port with the
+Rpi's IP address as the hostname. In order to do this, we will need to find what
+port the Rpi is listening over your local internet.
 
-You can see what ports are open on this Rpi or other computers on the network using this command on your local computer:
+You can see what ports are open on this Rpi or other computers on the network
+using this command on your local computer:
 
 `sudo nmap -O 192.168.1.170`
 
@@ -41,7 +43,7 @@ Scan for hosts on your local network:
 
 `nmap -sP -PI -PT 192.168.1.220/24`
 
-Once you find the Rpi's IP, connect to it via ssh:
+Once you've found your Rpi's IP, connect to it via ssh:
 
 `ssh 'username'@'ip_address'`
 
@@ -51,7 +53,8 @@ Open the Raspberry Config Tool to setup your Rpi.
 
 `sudo raspi-config`
 
-Find Python scripts for hosting an http server and connecting to bluetooth devices in `/raspi_arduino/py_server/`.
+Find Python scripts for hosting an http server and connecting to bluetooth
+devices in `/raspi_arduino/py_server/`.
 
 Run `python server.py` to start the Flask http server.
 
