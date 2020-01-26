@@ -18,10 +18,19 @@ void setup() {
 
 void loop() { // run over and over
 
+  bool reading = false;
+
   if (Serial1.available()) {
+    reading = true;
     Serial.write(Serial1.read());
   }
 
-  delay(500); // Process one byte every half second
+  if (reading) {
+    delay(10); // Very short delay as we are readuing data.
+  } else {
+    delay(1000); // Wait a second
+  }
+
+
 
 }
