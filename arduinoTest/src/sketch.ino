@@ -1,6 +1,10 @@
 #include <SoftwareSerial.h>
 
 const int baud_rate = 9600;
+const int endSig = 7651234;
+
+String receied_data = '';
+String last_operation = '';
 
 void setup() {
   // MAKE SURE THAT THE TX AND RX PINS ARE CONNECTED TO:
@@ -22,12 +26,22 @@ void loop() { // run over and over
 
   if (Serial1.available()) {
     reading = true;
-    Serial.write(Serial1.read());
+    recv_data = Serial1.read();
+    Serial.write(recv_data);
+    receied_data += recv_data;
   }
 
   if (reading) {
-    delay(10); // Very short delay as we are readuing data.
+    delay(5); // Very short delay as we are readuing data.
   } else {
+    if (received_data.length() > 1) {
+      Serial.println("Finished receiving operation:")
+      Serial.println(received_data)
+      Serial.println('')
+      last_operation = receied_data;
+      receied_data = '';
+    }
+    Serial.println("Listening ...");
     delay(1000); // Wait a second
   }
 
