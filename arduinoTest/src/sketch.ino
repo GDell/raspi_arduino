@@ -45,7 +45,7 @@ void loop() { // run over and over
       received_data = '\0';
     }
 
-    Serial.println("Listening ...");
+    //Serial.println("Listening ...");
     delay(1000); // Wait a second
   }
 
