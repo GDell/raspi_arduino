@@ -19,7 +19,7 @@ def lookUpNearbyBluetoothDevices():
     nearby_devices = bluetooth.discover_devices()
     data = []
     for bdaddr in nearby_devices:
-        temp = {str(bluetooth.lookup_name( bdaddr ))) : str(bdaddr)}
+        temp = {str(bluetooth.lookup_name( bdaddr )) : str(bdaddr)}
         addrStr = str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]"
         print(addrStr)
         data.append(temp)
