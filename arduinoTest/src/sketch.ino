@@ -23,7 +23,7 @@ void setup() {
 void loop() { // run over and over
 
   bool reading = false;
-  String recv_data;
+  char recv_data;
 
   if (Serial1.available()) {
     reading = true;
