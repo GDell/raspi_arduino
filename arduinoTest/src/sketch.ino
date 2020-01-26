@@ -35,12 +35,14 @@ void loop() { // run over and over
   if (reading) {
     delay(5); // Very short delay as we are readuing data.
   } else {
-    if (received_data.length() > 1) {
+
+    if (received_data.length() > 2) {
       Serial.println("Finished receiving operation:");
       Serial.println(received_data);
       last_operation = received_data;
-      received_data = "";
+      received_data = "_";
     }
+
     Serial.println("Listening ...");
     delay(1000); // Wait a second
   }
