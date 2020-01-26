@@ -20,7 +20,7 @@ def sendMessageTo(targetBluetoothMacAddress):
   port = 1
   sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
   sock.connect((targetBluetoothMacAddress, 1))
-  sock.send("hello!!".encode())
+  sock.send("hello!!")
   sock.close()
 
 def lookUpNearbyBluetoothDevices():
@@ -54,7 +54,7 @@ sendMessageTo('98:D3:51:FD:B7:46')
 
 
 
-# lookUpNearbyBluetoothDevices()
+#lookUpNearbyBluetoothDevices()
 
 # print("Provide address:"
 # theNum = str(3input())

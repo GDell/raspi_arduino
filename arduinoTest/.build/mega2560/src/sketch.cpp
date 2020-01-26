@@ -3,69 +3,37 @@
 void setup();
 void loop();
 #line 1 "src/sketch.ino"
-//Include the module so we don't
-//have to use the default Serial
-//so the Arduino can be plugged in
-//to a computer and still use bluetooth
 //#include <SoftwareSerial.h>
 
-//Define the pins used for receiving
-//and transmitting information via Bluetooth
-const int rxpin = 0;
-const int txpin = 1;
+//SoftwareSerial mySerial(19, 18); // RX, TX
 
-//Variable to store input value
-//initialized with arbitrary value
-char k = 'A';
-//Connect the Bluetooth module
-SoftwareSerial bluetooth(rxpin, txpin);
+void setup() {
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+  // Deleted while loop, unnecessary
 
-char data = 0;                //Variable for storing received data
-int greenLED = 42;
-int redLED = 44;
-int blueLED = 45;
-int LEDpins[] = {greenLED, redLED, blueLED};
-int ledCount = 0;
-bool reset = false;
-
-void setup(){
-  Serial.begin(600); //Sets the data rate in bits per second (baud) for serial data
-  Serial.println("Serial monitor ready.");
-
-  //Initialize the bluetooth
-  bluetooth.begin(9600);
-  Serial.println("Bluetooth ready.");
-  bluetooth.println("Bluetooth ready.");
-
-  pinMode(greenLED, OUTPUT);        //Sets digital pin 13 as output pini
-  pinMode(blueLED, OUTPUT);
-  pinMode(redLED, OUTPUT);
+  // set the data rate for the SoftwareSerial port
+  // notice that your comment on previous line says SoftwareSerial port
+  // but you are setting the Serial3 port -- this is where we use mySerial
+  // Serial3.begin(38400); // commented your line of code
 
 
+  //Serial1.begin(1382400);
+  Serial1.begin(9600);
 }
 
-void loop() {
-
-  Serial.println("Writing to digital pin ..."+String(LEDpins[ledCount]));
-  digitalWrite(LEDpins[ledCount], HIGH); // sets the LED on
-  int highPin = LEDpins[ledCount];
-
-  if (ledCount >= 2) {
-    ledCount = 0;
-  } else {
-    ledCount = ledCount + 1;
+void loop() { // run over and over
+  //if (Serial3.available()) { // we don't use Serial3 any more
+  //Serial.println("SEARCHING FOR BLUETOOTH DATA");
+  if (Serial1.available()) {
+    //Serial.println("DATA DETECTED");
+    //Serial.write(Serial3.read());
+    Serial.write(Serial1.read());
+    //Serial.println(Serial1.read());
   }
-
-  //if(bluetooth.available()){
-    //Remember new data
-  Serial.println("Reading bluetooth ...");
-  k = bluetooth.read();
-    //Print the data for debugging purposes
-  Serial.println(k);
+  delay(500);
+  //if (Serial.available()) {
+    //Serial3.write(Serial.read());
+    //mySerial.write(Serial.read());
   //}
-
-  delay(2500);                // waits for a second
-  digitalWrite(highPin, LOW);
-  delay(2500);
-
 }
