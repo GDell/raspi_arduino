@@ -21,8 +21,7 @@ def lookUpNearbyBluetoothDevices():
         print(str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]")
 
 def selectFromNearByDevices():
-    print("Searching for devices...")
-    print("")
+    print("Searching for devices...\n")
     #Create an array with all the MAC
     #addresses of the detected devices
     nearby_devices = bluetooth.discover_devices()
