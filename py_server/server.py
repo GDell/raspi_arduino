@@ -2,10 +2,11 @@ from flask import Flask
 import socket
 app = Flask(__name__)
 
+import rasp_bluetooth_3
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
-
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
