@@ -10,7 +10,7 @@ def hello_world():
     return 'Hello, World!'
 
 @app.route('/bluetooth_devices')
-def hello_world():
+def search_for_devices():
     data = {
         'bluetooth_devices' : rasp_bluetooth_3.lookUpNearbyBluetoothDevices()
     }
