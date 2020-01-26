@@ -3,7 +3,7 @@
 const int baud_rate = 9600;
 const int endSig = 7651234;
 
-String receied_data;
+String received_data;
 String last_operation;
 
 void setup() {
