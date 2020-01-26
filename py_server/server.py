@@ -34,9 +34,7 @@ def get_Host_name_IP():
 get_Host_name_IP() #Function call
 
 
-
-
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
-    app.run(host='192.168.1.176', port=80, debug=True)
+    app.run(host=host_ip, port=80, debug=True)
