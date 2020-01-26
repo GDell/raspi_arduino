@@ -20,12 +20,7 @@ def sendMessageTo(targetBluetoothMacAddress):
   port = 1
   sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
   sock.connect((targetBluetoothMacAddress, 1))
-  import time
-  time.sleep(5)
-  print("CONNECTED!")
-  sock.send("FUCK YEAH HAVE WE FINALLY FIGURED THIS SHIT OUT!!!!?".encode('utf-8'))
-  print("SENT DATA!")
-  time.sleep(5)
+  sock.send("hello!!")
   sock.close()
 
 def lookUpNearbyBluetoothDevices():
@@ -55,13 +50,11 @@ def lookUpNearbyBluetoothDevices():
   # bd_addr = nearby_devices[selection]
   # print("BD addr:"+str(bd_addr))
 
-# 98:D3:51:FD:B7:46
 sendMessageTo('98:D3:51:FD:B7:46')
-# 'FC:58:FA:22:CA:01'
 
 
 
-# lookUpNearbyBluetoothDevices()
-#
+#lookUpNearbyBluetoothDevices()
+
 # print("Provide address:"
 # theNum = str(3input())
