@@ -37,8 +37,10 @@ void loop() { // run over and over
   } else {
 
     if (received_data.length() > 2) {
+      Serial.println("");
       Serial.println("Finished receiving operation:");
       Serial.println(received_data);
+      Serial.println("");
       last_operation = received_data;
       received_data = '\0';
     }
