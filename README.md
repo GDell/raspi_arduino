@@ -4,7 +4,9 @@ Requirements:
 
 - Internet connection
 
-- Raspberry Pi and bluetooth module <intorobotics.com/pick-right-bluetooth-module-diy-arduino-project/>
+- Raspberry Pi
+
+- Bluetooth module <intorobotics.com/pick-right-bluetooth-module-diy-arduino-project/>
 
 - Arduino
 
@@ -12,6 +14,15 @@ Requirements:
 
 ### Raspberry Pi Config
 Connect the ethernet cable to your Rpi.
+
+Before proceeding, make sure you enable bluetooth on the Rpi. If you don't,
+any attempts to send or read data over bluetooth will result in:
+
+`bluetooth.btcommon.BluetoothError: (111, 'Connection refused')`
+
+Use the following article to enable bluetooth on your Rpi:
+
+<https://www.cnet.com/how-to/how-to-setup-bluetooth-on-a-raspberry-pi-3/>
 
 In order to host something on local internet, host on an open port with the Rpi's IP address as the hostname.
 In order to do this, we will need to find what port the Rpi is listening over your local internet.
@@ -33,6 +44,10 @@ Once connected to the Rpi:
 Open the Raspberry Config Tool to setup your Rpi.
 
 `sudo raspi-config`
+
+Follow this guide in order to allow python to access the Raspberry Pi's bluetooth module.
+
+<http://blog.davidvassallo.me/2014/05/11/android-linux-raspberry-pi-bluetooth-communication/>
 
 Find Python scripts for hosting an http server and connecting to bluetooth devices in `/raspi_arduino/py_server/`.
 
