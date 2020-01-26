@@ -17,8 +17,13 @@ def sendMessageTo(targetBluetoothMacAddress, send_data):
 def lookUpNearbyBluetoothDevices():
     print("Searching for nearby bluetooth devices ... ")
     nearby_devices = bluetooth.discover_devices()
+    data = []
     for bdaddr in nearby_devices:
-        print(str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]")
+        temp = {str(bluetooth.lookup_name( bdaddr ))) : str(bdaddr)}
+        addrStr = str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]"
+        print(addrStr)
+        data.append(temp)
+    return data
 
 def selectFromNearByDevices():
     print("Searching for devices...\n")

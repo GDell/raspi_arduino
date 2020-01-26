@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import Flask as BaseFlask, Config as BaseConfig, render_template, request, jsonify
 import socket
 app = Flask(__name__)
 
@@ -7,6 +8,13 @@ import rasp_bluetooth_3
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+@app.route('/bluetooth_devices')
+def hello_world():
+    data = {
+        'bluetooth_devices' : rasp_bluetooth_3.lookUpNearbyBluetoothDevices()
+    }
+    return jsonify(data)
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
