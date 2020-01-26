@@ -40,7 +40,7 @@ void loop() { // run over and over
       Serial.println(received_data);
       last_operation = received_data;
       String received_data;
-      received_data == "";
+      received_data = "";
     }
     Serial.println("Listening ...");
     delay(1000); // Wait a second
