@@ -39,7 +39,8 @@ void loop() { // run over and over
     if (received_data.length() > 2) {
       Serial.println("Finished receiving operation:");
       int length = strlen(received_data);
-      if (received_data[length-1] == "_") {
+      String firstEle = received_data[length-1];
+      if (firstEle == "_") {
         received_data[length-1] = '\0';
       }
       Serial.println(received_data);
