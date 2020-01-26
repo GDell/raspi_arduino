@@ -23,8 +23,10 @@ def get_ip():
 # IP address
 def get_Host_name_IP():
     try:
-        global host_name = socket.gethostname()
-        global host_ip = get_ip()
+        global host_name
+        global host_ip
+        host_name = socket.gethostname()
+        host_ip = get_ip()
         print("Hostname :  ",host_name)
         print("IP : ",host_ip)
     except:
