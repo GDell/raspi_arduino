@@ -1,6 +1,5 @@
 #include <SoftwareSerial.h>
 
-//SoftwareSerial mySerial(19, 18); // RX, TX
 const int baud_rate = 9600;
 
 void setup() {
@@ -12,9 +11,9 @@ void setup() {
   // RXD --> TXA (18 for Serial 1)
   Serial.begin(baud_rate); // Serial monitor.
   Serial1.begin(baud_rate); // Listin to bluetooth module over Serial1 pins (18/19).
-  Serial.print("Bluetooth configured, baud rate: ")
-  Serial.print(baud_rate)
-  serial.println(".")
+  Serial.print("Bluetooth configured, baud rate: ");
+  Serial.print(baud_rate);
+  Serial.println(".");
 }
 
 void loop() { // run over and over
