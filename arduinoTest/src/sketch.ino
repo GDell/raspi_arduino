@@ -38,8 +38,11 @@ void loop() { // run over and over
 
     if (received_data.length() > 2) {
       Serial.println("Finished receiving operation:");
-      String operation = received_data.remove(0, 0);
-      Serial.println(operation);
+      int length = strlen(received_data);
+      if (received_data[length-1] == "_") {
+        received_data[length-1] = '\0';
+      }
+      Serial.println(received_data);
       last_operation = received_data;
       received_data = "_";
     }
