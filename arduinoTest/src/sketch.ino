@@ -28,7 +28,7 @@ void loop() { // run over and over
     reading = true;
     recv_data = Serial1.read();
     Serial.write(recv_data);
-    receied_data += recv_data;
+    received_data += recv_data;
   }
 
   if (reading) {
@@ -38,7 +38,7 @@ void loop() { // run over and over
       Serial.println("Finished receiving operation:");
       Serial.println(received_data);
       last_operation = received_data;
-      receied_data = '';
+      received_data = '';
     }
     Serial.println("Listening ...");
     delay(1000); // Wait a second
