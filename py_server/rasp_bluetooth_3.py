@@ -41,5 +41,6 @@ def selectFromNearByDevices():
     print("BD addr:"+str(bd_addr))
 
 
-sendMessageTo(HCO6_MAC_ADDRESS, "Hello! Testing Bluetooth ...")
-# lookUpNearbyBluetoothDevices()
+if __name__ == '__main__':
+    sendMessageTo(HCO6_MAC_ADDRESS, "Hello! Testing Bluetooth ...")
+    # lookUpNearbyBluetoothDevices()
