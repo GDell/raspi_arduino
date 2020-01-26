@@ -1,67 +1,46 @@
-import bluetooth
+import bluetooth, time
 
-def receiveMessages():
-  server_sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+HCO6_MAC_ADDRESS = '98:D3:51:FD:B7:46'
+HCO5_MAC_ADDRESS = 'FC:58:FA:22:CA:01'
 
-  port = 1
-  server_sock.bind(("",port))
-  server_sock.listen(1)
-
-  client_sock, address = server_sock.accept()
-  print("Accepted connection from " + str(address))
-
-  data = client_sock.recv(1024)
-  print("received [%s]" % data)
-
-  client_sock.close()
-  server_sock.close()
-
-def sendMessageTo(targetBluetoothMacAddress):
-  port = 1
-  sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
-  sock.connect((targetBluetoothMacAddress, 1))
-  import time
-  time.sleep(5)
-  print("CONNECTED!")
-  sock.send("FUCK YEAH HAVE WE FINALLY FIGURED THIS SHIT OUT!!!!?".encode('utf-8'))
-  print("SENT DATA!")
-  time.sleep(5)
-  sock.close()
+def sendMessageTo(targetBluetoothMacAddress, send_data):
+    port = 1
+    sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+    sock.connect((targetBluetoothMacAddress, 1))
+    time.sleep(.5)
+    print("CONNECTED!")
+    sock.send(send_data.encode('utf-8'))
+    print("SENT DATA: "+str(send_data))
+    time.sleep(1)
+    sock.close()
 
 def lookUpNearbyBluetoothDevices():
-  print("Searching for nearby bluetooth devices ... ")
-  nearby_devices = bluetooth.discover_devices()
-  for bdaddr in nearby_devices:
-    print(str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]")
-  #Look for all Bluetooth devices
+    print("Searching for nearby bluetooth devices ... ")
+    nearby_devices = bluetooth.discover_devices()
+    for bdaddr in nearby_devices:
+        print(str(bluetooth.lookup_name( bdaddr )) + " [" + str(bdaddr) + "]")
 
-  # print("Searching for devices...")
-  # print("")
-  # #Create an array with all the MAC
-  # #addresses of the detected devices
-  # nearby_devices = bluetooth.discover_devices()
-  # #Run through all the devices found and list their name
-  # num = 0
-  # print("Select your device by entering its coresponding number...")
-  # for i in nearby_devices:
-  # 	num+=1
-  # 	print(num , ": " , bluetooth.lookup_name( i ))
-  #
-  # #Allow the user to select their Arduino
-  # #bluetooth module. They must have paired
-  # #it before hand.
-  # selection = input("> ") - 1
-  # print("You have selected", bluetooth.lookup_name(nearby_devices[selection]))
-  # bd_addr = nearby_devices[selection]
-  # print("BD addr:"+str(bd_addr))
+def selectFromNearByDevices():
+    print("Searching for devices...")
+    print("")
+    #Create an array with all the MAC
+    #addresses of the detected devices
+    nearby_devices = bluetooth.discover_devices()
+    #Run through all the devices found and list their name
+    num = 0
+    print("Select your device by entering its coresponding number...")
+    for i in nearby_devices:
+    	num+=1
+    	print(num , ": " , bluetooth.lookup_name( i ))
 
-# 98:D3:51:FD:B7:46
-sendMessageTo('98:D3:51:FD:B7:46')
-# 'FC:58:FA:22:CA:01'
+    #Allow the user to select their Arduino
+    #bluetooth module. They must have paired
+    #it before hand.
+    selection = input("> ") - 1
+    print("You have selected", bluetooth.lookup_name(nearby_devices[selection]))
+    bd_addr = nearby_devices[selection]
+    print("BD addr:"+str(bd_addr))
 
 
-
+sendMessageTo(HCO6_MAC_ADDRESS, "Hello! Testing Bluetooth ...")
 # lookUpNearbyBluetoothDevices()
-#
-# print("Provide address:"
-# theNum = str(3input())
