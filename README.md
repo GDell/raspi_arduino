@@ -69,7 +69,7 @@ Upload to a specific board type:
 Start a serial port.
 Specify the Baud rate with `-b`. -600 baud rate seems to work for mega.
 
-`sudo ino serial  -b 600`
+`sudo ino serial  -b 9600`
 
 Build and uplooad for arduino mega.
 
@@ -77,4 +77,4 @@ Build and uplooad for arduino mega.
 
 Build, upload, and port the serial monitor to the terminal.
 
-`sudo ino build -m mega2560 && sudo ino upload -m mega2560 && sudo ino serial -b 600`
+`sudo ino build -m mega2560 && sudo ino upload -m mega2560 && sudo ino serial -b 9600`
