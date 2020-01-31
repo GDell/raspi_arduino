@@ -11,7 +11,7 @@ env3/*
 env3
 .DS_Store
 *.swp
-arduinoTest/.build
-*/arduinoTest/.build
-arduinoTest/.build/*
+arduino/.build
+*/arduino/.build
+arduino/.build/*
 *.pyc
