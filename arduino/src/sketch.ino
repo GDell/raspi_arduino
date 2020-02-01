@@ -32,7 +32,7 @@ color colors[7] = {
   cyan, // Cyan 4
   magenta, // Magenta 5
   yellow // Yellow 6
-}
+};
 
 void fire_color(int red_light_value, int green_light_value, int blue_light_value) {
   analogWrite(red_light_pin, red_light_value);
