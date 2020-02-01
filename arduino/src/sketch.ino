@@ -8,6 +8,7 @@ String last_operation; // Object to store 1 operation after finished receiving.
 
 // PUSH BUTTON
 int inPin = 7;
+int button_val = 0;
 
 // RGB LED
 int red_light_pin= 11;
@@ -100,8 +101,8 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
-  val = digitalRead(inPin);  // read input value
-  if (val == HIGH) {         // check if the input is HIGH (button released)
+  button_val = digitalRead(inPin);  // read input value
+  if (button_val == HIGH) {         // check if the input is HIGH (button released)
     fire_color_from_string("Blue");
   } else {
     fire_color_from_string("Magenta");
