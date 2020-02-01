@@ -71,6 +71,8 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
+  // Serial.println("Current color: ");
+  // Serial.println(count);
   select_color(count);
 
   // fire_color(255, 0, 0); // Red
@@ -103,7 +105,7 @@ void loop() { // run over and over
 
     //Serial.println("Listening ...");
     delay(1500); // Wait a second
-    if (max_count < 7) {
+    if (count < max_count) {
       count = count + 1;
     } else {
       count = 0;
