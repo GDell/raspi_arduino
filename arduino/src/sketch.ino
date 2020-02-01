@@ -47,7 +47,7 @@ void select_color(int index) {
   fire_color(selected_color.red_light_value, selected_color.green_light_value, selected_color.blue_light_value);
 }
 
-void parse_color(char[] selected_color) {
+int parse_color(char* selected_color) {
   int index = 0;
   if ("red" == selected_color || "Red" == selected_color) {
     return index;
@@ -94,7 +94,7 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
-  color_count = parse_color("red");
+  int color_count = parse_color("red");
   select_color(color_count);
 
   if (Serial1.available()) {
