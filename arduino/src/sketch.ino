@@ -34,6 +34,9 @@ color colors[7] = {
   yellow // Yellow 6
 };
 
+int count = 0;
+int max_count = 7;
+
 void fire_color(int red_light_value, int green_light_value, int blue_light_value) {
   analogWrite(red_light_pin, red_light_value);
   analogWrite(green_light_pin, green_light_value);
@@ -68,7 +71,7 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
-  select_color(0);
+  select_color(count);
 
   // fire_color(255, 0, 0); // Red
   // fire_color(0, 255, 0); // Green
@@ -99,7 +102,13 @@ void loop() { // run over and over
     }
 
     //Serial.println("Listening ...");
-    delay(1000); // Wait a second
+    delay(1500); // Wait a second
+    if (max_count < 7) {
+      count = count + 1;
+    } else {
+      count = 0;
+    }
+
   }
 
 }
