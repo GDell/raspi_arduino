@@ -47,7 +47,7 @@ void select_color(int index) {
   fire_color(selected_color.red_light_value, selected_color.green_light_value, selected_color.blue_light_value);
 }
 
-void parse_color(String selected_color) {
+void parse_color(char[] selected_color) {
   int index = 0;
   if ("red" == selected_color || "Red" == selected_color) {
     return index;
