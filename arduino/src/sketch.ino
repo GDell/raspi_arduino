@@ -1,14 +1,16 @@
 #include <SoftwareSerial.h>
 
+// BLUETOOTH CONFIG
 const int baud_rate = 9600;
 const int endSig = 7651234;
+String received_data; // Object to store read data.
+String last_operation; // Object to store 1 operation after finished receiving.
 
+
+// RGB LED
 int red_light_pin= 11;
 int green_light_pin = 10;
 int blue_light_pin = 9;
-
-String received_data;
-String last_operation;
 
 typedef struct {
   int red_light_value;
@@ -34,9 +36,6 @@ color colors[7] = {
   yellow // Yellow 6
 };
 
-int count = 0;
-int max_count = 7;
-
 void fire_color(int red_light_value, int green_light_value, int blue_light_value) {
   analogWrite(red_light_pin, red_light_value);
   analogWrite(green_light_pin, green_light_value);
@@ -47,6 +46,11 @@ void select_color(int index) {
   color selected_color = colors[index];
   fire_color(selected_color.red_light_value, selected_color.green_light_value, selected_color.blue_light_value);
 }
+
+
+
+int count = 0;
+int max_count = 7;
 
 void setup() {
   pinMode(red_light_pin, OUTPUT);
@@ -71,17 +75,7 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
-  // Serial.println("Current color: ");
-  // Serial.println(count);
   select_color(count);
-
-  // fire_color(255, 0, 0); // Red
-  // fire_color(0, 255, 0); // Green
-  // fire_color(0, 0, 255); // Blue
-  // fire_color(255, 255, 125); // Raspberry
-  // fire_color(0, 255, 255); // Cyan
-  // fire_color(255, 0, 255); // Magenta
-  // fire_color(255, 255, 0); // Yellow
 
   if (Serial1.available()) {
     reading = true;
@@ -90,21 +84,28 @@ void loop() { // run over and over
     received_data += recv_data;
   }
 
+
   if (reading) {
     delay(5); // Very short delay as we are reading data.
-  } else {
 
+  } else {
+    // Not currently recieving bluetooth data.
+
+    // Are we done listening to an operation over bluetooth?
+    // If so, store the data so we can listen for the next operation.
     if (received_data.length() > 2) {
       Serial.println("");
       Serial.println("Finished receiving operation:");
       Serial.println(received_data);
       Serial.println("");
       last_operation = received_data;
-      received_data = '\0';
+      received_data = '\0'; // Clear received data to store the next operation.
     }
 
     //Serial.println("Listening ...");
-    delay(1500); // Wait a second
+    delay(1500); // Wait a second.5
+
+    // This
     if (count < max_count) {
       count = count + 1;
     } else {
