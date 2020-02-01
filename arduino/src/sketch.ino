@@ -47,6 +47,25 @@ void select_color(int index) {
   fire_color(selected_color.red_light_value, selected_color.green_light_value, selected_color.blue_light_value);
 }
 
+void parse_color(String selected_color) {
+  int index = 0;
+  if ("red" == selected_color || "Red" == selected_color) {
+    return index;
+  } else if ("green" == selected_color || "Green" == selected_color) {
+    index = 1;
+  } else if ("blue" == selected_color || "Blue" == selected_color) {
+    index = 2;
+  } else if ("raspberry" == selected_color || "Raspberry" == selected_color) {
+    index = 3;
+  } else if ("cyan" == selected_color || "Cyan" == selected_color) {
+    index = 4;
+  } else if ("magenta" == selected_color || "Magenta" == selected_color) {
+    index = 5;
+  } else if ("yellow" == selected_color || "Yellow" == selected_color) {
+    index = 6;
+  }
+  return index;
+}
 
 
 int count = 0;
@@ -75,7 +94,8 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
-  select_color(count);
+  color_count = parse_color("red");
+  select_color(color_count);
 
   if (Serial1.available()) {
     reading = true;
@@ -105,12 +125,12 @@ void loop() { // run over and over
     //Serial.println("Listening ...");
     delay(1500); // Wait a second.5
 
-    // This
-    if (count < max_count) {
-      count = count + 1;
-    } else {
-      count = 0;
-    }
+    // This iterates the color counter.
+    // if (count < max_count) {
+    //   count = count + 1;
+    // } else {
+    //   count = 0;
+    // }
 
   }
 
