@@ -1,13 +1,17 @@
 from flask import Flask
 from flask import Flask as BaseFlask, Config as BaseConfig, render_template, request, jsonify
-import socket
 app = Flask(__name__)
-
+import server
 import rasp_bluetooth_3
+import network
 
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+@app.route('/api/led/color/<string:color>')
+def set_rgb_led():
+    print("TODO")
 
 @app.route('/bluetooth_devices')
 def search_for_devices():
@@ -16,34 +20,12 @@ def search_for_devices():
     }
     return jsonify(data)
 
-def get_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        # doesn't even have to be reachable
-        s.connect(('10.255.255.255', 1))
-        IP = s.getsockname()[0]
-    except:
-        IP = '127.0.0.1'
-    finally:
-        s.close()
-    return IP
-
-# Function to display hostname and
-# IP address
-def get_Host_name_IP():
-    try:
-        global host_name
-        global host_ip
-        host_name = socket.gethostname()
-        host_ip = get_ip()
-        print("Hostname :  ",host_name)
-        print("IP : ",host_ip)
-    except:
-        print("Unable to get Hostname and IP")
 
 # Driver code
-get_Host_name_IP() #Function call
+global host_ip
+global host_name
 
+host_ip , host_name= network.get_Host_name_IP() #Function call
 
 if __name__ == '__main__':
     # get_Host_name_IP() #Function call
