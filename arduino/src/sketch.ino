@@ -41,7 +41,8 @@ void fire_color(int red_light_value, int green_light_value, int blue_light_value
 }
 
 void select_color(int index) {
-  fire_color(colors[index][0], colors[index][1], colors[index][2]);
+  color = colors[index]
+  fire_color(color.red_light_value, color.green_light_value, color.blue_light_value);
 }
 
 void setup() {
