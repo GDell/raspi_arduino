@@ -102,12 +102,17 @@ void loop() { // run over and over
   char recv_data;
 
   button_val = digitalRead(inPin);  // read input value
-  if (button_val == 0) {         // check if the input is HIGH (button released)
-    fire_color_from_string("Blue");
-  } else {
-    fire_color_from_string("Magenta");
-  }
+  Serial.println("");
+  Serial.print("Button Val: ");
+  Serial.print(button_val);
+  Serial.println("");
+  // if (button_val == 0) {         // check if the input is HIGH (button released)
+  //   fire_color_from_string("Blue");
+  // } else {
+  //   fire_color_from_string("Magenta");
+  // }
 
+  fire_color_from_string("green");
 
   if (Serial1.available()) {
     reading = true;
