@@ -6,6 +6,8 @@ const int endSig = 7651234;
 String received_data; // Object to store read data.
 String last_operation; // Object to store 1 operation after finished receiving.
 
+// PUSH BUTTON
+int inPin = 7;
 
 // RGB LED
 int red_light_pin= 11;
@@ -72,9 +74,13 @@ int count = 0;
 int max_count = 7;
 
 void setup() {
+  // RGB LED
   pinMode(red_light_pin, OUTPUT);
   pinMode(green_light_pin, OUTPUT);
   pinMode(blue_light_pin, OUTPUT);
+
+  // PUSH BUTTON
+  pinMode(inPin, INPUT);
 
   // MAKE SURE THAT THE TX AND RX PINS ARE CONNECTED TO:
   // NOTE: This is only validated for the Elegoo Mega 2560 Third Party Board.
@@ -94,7 +100,13 @@ void loop() { // run over and over
   bool reading = false;
   char recv_data;
 
-  fire_color_from_string("Magenta");
+  val = digitalRead(inPin);  // read input value
+  if (val == HIGH) {         // check if the input is HIGH (button released)
+    fire_color_from_string("Blue");
+  } else {
+    fire_color_from_string("Magenta");
+  }
+
 
   if (Serial1.available()) {
     reading = true;
