@@ -102,7 +102,7 @@ void loop() { // run over and over
   char recv_data;
 
   button_val = digitalRead(inPin);  // read input value
-  if (button_val == HIGH) {         // check if the input is HIGH (button released)
+  if (button_val == 0) {         // check if the input is HIGH (button released)
     fire_color_from_string("Blue");
   } else {
     fire_color_from_string("Magenta");
